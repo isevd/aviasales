@@ -91,9 +91,8 @@ h6 {
 
 #root {
   background: #f3f7fa;
-  margin-left: auto;
-  margin-right: auto;
   font-family:
     "Open Sans",
     sans-serif;
+  overflow: hidden;
 }

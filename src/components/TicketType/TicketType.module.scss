@@ -52,3 +52,8 @@
   border-radius: 0 5px 5px 0;
 }
 
+@media (max-width: 600px) {
+ .tabs {
+    width: 98vw;
+ }
+}

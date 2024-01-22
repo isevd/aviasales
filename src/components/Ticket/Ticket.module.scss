@@ -72,3 +72,15 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .ticket {
+    width: 80%;
+  }
+
+  .logo {
+    position: static !important;
+    margin-top: 20px;
+    margin-left: auto;
+  }
+}
