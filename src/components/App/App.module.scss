@@ -1,0 +1,79 @@
+.app {
+  max-width: 960px;
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 20px;
+  min-height: 100vh;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    gap: 20px;
+  }
+
+  .loading {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-left-color: #09f;
+    margin-left: auto;
+    margin-right: auto;
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  .nothing {
+    text-align: center;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .main {
+    display: flex;
+    gap: 20px;
+  }
+
+  .logo {
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+
+  button {
+    color: white;
+    background-color: #2196f3;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--Primary-Colors-White, #fff);
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    :hover {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes gradient {
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+}

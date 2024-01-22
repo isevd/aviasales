@@ -1,0 +1,54 @@
+.tabs {
+  display: flex;
+  font-size: 12px;
+  width: 502px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.tabs li {
+  flex-grow: 1;
+}
+
+.tabs input {
+  position: absolute;
+  appearance: none;
+}
+
+.tabs li span {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 15px 0;
+  transition: 0.3s;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #dfe5ec;
+  cursor: pointer;
+  color: #4a4a4a;
+  text-align: center;
+  font-family: "Open Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 166.667% */
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.tabs li input:checked + span {
+  color: #fff;
+  background: #2196f3;
+  border-color: #2196f3;
+}
+
+.tabs li:first-child span {
+  border-right: 0;
+  border-radius: 5px 0 0 5px;
+}
+
+.tabs li:last-child span {
+  border-left: 0;
+  border-radius: 0 5px 5px 0;
+}
+
