@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { message } from 'antd';
 
 export const fetchId = createAsyncThunk('tickets/fetchId', async function () {
   try {
@@ -6,7 +7,8 @@ export const fetchId = createAsyncThunk('tickets/fetchId', async function () {
     const result = await data.json();
     return result;
   } catch (error) {
-    throw { message: error.message, status: error.status };
+    message.error('Ошибка при получении данных с сервера');
+    throw error;
   }
 });
 
@@ -19,14 +21,17 @@ export const fetchTicketsData = createAsyncThunk('tickets/fetchTicketData', asyn
       const { tickets, stop } = await response.json();
       arr.push(...tickets);
       if (!stop) {
-        arr.push(...dispatch(fetchTicketsData(searchId)));
+        dispatch(fetchTicketsData(searchId));
       } else if (stop) {
         dispatch(stopFetching());
       }
     } else if (response.status === 500) {
-      arr.push(...dispatch(fetchTicketsData(searchId)));
+      dispatch(fetchTicketsData(searchId));
     }
-  } catch {
+  } catch (response) {
+    if (!response.ok) {
+      message.error('Ошибка при получении данных с сервера');
+    }
     return arr;
   }
 
