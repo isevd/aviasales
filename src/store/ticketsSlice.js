@@ -5,7 +5,7 @@ export const fetchId = createAsyncThunk('tickets/fetchId', async function () {
   try {
     const response = await fetch('https://aviasales-test-api.kata.academy/search');
     if (!response.ok) {
-      throw new Error();
+      throw new Error(`error response status: ${response.status}`);
     }
     const result = await response.json();
     return result;
@@ -31,7 +31,7 @@ export const fetchTicketsData = createAsyncThunk('tickets/fetchTicketData', asyn
     } else if (response.status === 500) {
       dispatch(fetchTicketsData(searchId));
     } else if (!response.ok) {
-      throw new Error();
+      throw new Error(`error response status: ${response.status}`);
     }
     return arr;
   } catch {
