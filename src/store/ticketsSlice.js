@@ -3,8 +3,11 @@ import { message } from 'antd';
 
 export const fetchId = createAsyncThunk('tickets/fetchId', async function () {
   try {
-    const data = await fetch('https://aviasales-test-api.kata.academy/search');
-    const result = await data.json();
+    const response = await fetch('https://aviasales-test-api.kata.academy/search');
+    if (!response.ok) {
+      throw new Error();
+    }
+    const result = await response.json();
     return result;
   } catch (error) {
     message.error('Ошибка при получении данных с сервера');
@@ -27,12 +30,12 @@ export const fetchTicketsData = createAsyncThunk('tickets/fetchTicketData', asyn
       }
     } else if (response.status === 500) {
       dispatch(fetchTicketsData(searchId));
-    }
-  } catch (response) {
-    if (!response.ok) {
-      message.error('Ошибка при получении данных с сервера');
+    } else if (!response.ok) {
+      throw new Error();
     }
     return arr;
+  } catch {
+    message.error('Ошибка при получении данных с сервера');
   }
 
   return arr;
